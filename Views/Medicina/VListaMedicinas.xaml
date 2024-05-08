@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.Views.Medicina.VListaMedicinas"
+             Title="Lista de Medicinas">
+
+    <Grid RowDefinitions="*">
+
+        <CollectionView x:Name="ListarMedicina"
+                    Grid.Row="0"
+                        SelectionMode="Single"
+                        Margin="0,1,0,0">
+            <CollectionView.ItemTemplate >
+                <DataTemplate>
+                    <SwipeView>
+
+                        <Frame CornerRadius="10"
+                           BackgroundColor="#0171cf"
+                           Padding="10"
+                           >
+
+                            <Grid ColumnDefinitions="*,2*" RowDefinitions="*,*" Margin="10">
+                                <Image Source="medicina.png"   Grid.RowSpan="2" 
+                               HeightRequest="75"
+                               WidthRequest="75"/>
+
+                                <Label Text="Medicina #1" FontSize="Title" Grid.Column="1"/>
+                                <Label Text="Detalle" FontSize="Small" Grid.Column="1" Grid.Row="1"/>
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button  
+            Text="+"
+            x:Name="btnNewMedicina"
+            Clicked="btnNewMedicina_Clicked"
+            Margin="10"
+            WidthRequest="65" HeightRequest="65"
+            HorizontalOptions="End"
+            VerticalOptions="End"
+            CornerRadius="50"/>
+    </Grid>
+</ContentPage>

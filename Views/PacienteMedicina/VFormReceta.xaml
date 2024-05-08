@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.Views.PacienteMedicina.VFormReceta">
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Label Text="Registro de Receta"
+            TextColor="#3d4a6d"
+            TextTransform="Uppercase"
+            FontAttributes="Bold"
+            FontSize="25"
+            HorizontalTextAlignment="Center"
+            />
+            <Frame CornerRadius="10"
+            BackgroundColor="#0171cf"
+    Padding="10"
+    Margin="10">
+                <Grid  ColumnDefinitions=".35*,.65*">
+                    <Label Text="Usuario"
+                   VerticalTextAlignment="Center"
+                   />
+                    <Picker x:Name="pkUsuarios"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        >
+                        <Picker.Items>
+                            <x:String>Luis Perez</x:String>
+                            <x:String>Alejandra Lema</x:String>
+                            <x:String>Karen Villamarin</x:String>
+                            <x:String>Karol Reyes</x:String>
+                            <x:String>Juan Lopez</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="10"
+           BackgroundColor="#0171cf"
+   Padding="10"
+   Margin="10"
+>
+                <Grid  ColumnDefinitions=".35*,.65*">
+                    <Label Text="Medicina"
+                  VerticalTextAlignment="Center"
+                  />
+                    <Picker x:Name="pkMedicina"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       >
+                        <Picker.Items>
+                            <x:String>Medicina 1</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                </Grid>
+            </Frame>
+            <Frame CornerRadius="10"
+           BackgroundColor="#0171cf"
+   Padding="10"
+   Margin="10"
+>
+                <Grid  ColumnDefinitions=".35*,.65*">
+                    <Button  Text="Guardar"
+   x:Name="btnGuardar"
+   Grid.Row="5"
+   Grid.ColumnSpan="2"
+   Margin="20,10,20,0"
+   BackgroundColor="#3d4a6d"
+   />
+
+
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

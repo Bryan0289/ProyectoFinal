@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinal.Views.Paciente.VFormPaciente"
+             Title="Formulario Pacientes">
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Label Text="Registro de Usuario"
+                 TextColor="#3d4a6d"
+                 TextTransform="Uppercase"
+                 FontAttributes="Bold"
+                 FontSize="25"
+                 HorizontalTextAlignment="Center"
+                 />
+            <Frame CornerRadius="10"
+                 BackgroundColor="#0171cf"
+         Padding="10"
+         Margin="10"
+      >
+                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                    
+                <Image Source="user.png" Grid.ColumnSpan="2"/>
+                <Button Text="Tomar Foto" Grid.Row="1" Margin="5"/>
+                <Button Text="Seleccionar" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                </Grid>
+            </Frame>
+
+            <Frame CornerRadius="10"
+         Margin="10"
+         BackgroundColor="#0171cf"
+         >
+                <Grid ColumnDefinitions=".35*,.65*"
+            RowDefinitions="*,*,*,*,*">
+                    <Label Text="Nombre:"
+                 VerticalTextAlignment="Center"/>
+                    <Entry x:Name="txtNombre"
+                 Placeholder="Nombre"
+                 Grid.Column="1"/>
+                    <Label Text="Apellido:"
+                 Grid.Row="1"
+                 VerticalTextAlignment="Center"/>
+                    <Entry x:Name="txtApellido"
+                 Placeholder="Apellido"
+                 Grid.Row="1"
+                 Grid.Column="1"/>
+                    <Label Text="Fecha de Nacimiento :"
+                     Grid.Row="2"
+                     VerticalTextAlignment="Center"/>
+                    <DatePicker x:Name="dpFecha"
+                          Grid.Row="2"
+                          Grid.Column="1"
+                          />
+                    <Label Text="Detalle:"
+                     VerticalTextAlignment="Center"
+                     Grid.Row="3"/>
+                    <Entry x:Name="txtDetalle"
+                     Placeholder="Detalle"
+                     Grid.Row="3"
+                     Grid.Column="1"
+                     />
+                    <Button  Text="Registrar"
+                       x:Name="btnGuardar"
+                       Grid.Row="4"
+                       Grid.ColumnSpan="2"
+                       Margin="20,10,20,0"
+                       BackgroundColor="#3d4a6d"
+                       />
+
+
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

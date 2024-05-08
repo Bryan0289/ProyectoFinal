@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Pacientes="clr-namespace:ProyectoFinal.Views.Paciente"
+             xmlns:Medicina="clr-namespace:ProyectoFinal.Views.Medicina"
+             xmlns:Control="clr-namespace:ProyectoFinal.Views.Control"
+       xmlns:PacienteMedicina="clr-namespace:ProyectoFinal.Views.PacienteMedicina"
+             x:Class="ProyectoFinal.Views.AppShell.AppShell">
+
+
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="Black" HeightRequest="150">
+            <Image
+                Aspect="AspectFill"
+                Opacity=".5"
+                Source="park.jpg" />
+            <Label
+                FontFamily="KanitB"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                Text="Programa"
+                TextColor="White"
+                VerticalOptions="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <ShellContent ContentTemplate="{DataTemplate Pacientes:VListPacientes}"
+              Title="Lista de Pacientes">
+        <ShellContent.Icon>
+
+
+            <FontImageSource
+                FontFamily="Icons"
+                Glyph="&#xF2BD;"
+                Color="Black"
+                />
+        </ShellContent.Icon>
+    </ShellContent>
+    <ShellContent ContentTemplate="{DataTemplate Medicina:VListaMedicinas}"
+          Title="Lista de Medicina">
+        <ShellContent.Icon>
+            <FontImageSource
+            FontFamily="Icons"
+            Glyph="&#xE801;"
+            Color="Black"
+            />
+        </ShellContent.Icon>
+    </ShellContent>
+    <ShellContent ContentTemplate="{DataTemplate Control:VControlRegistro}"
+      Title="Registro de Control">
+        <ShellContent.Icon>
+            <FontImageSource
+        FontFamily="Icons"
+        Glyph="&#xE802;"
+        Color="Black"
+        />
+        </ShellContent.Icon>
+    </ShellContent>
+    <ShellContent ContentTemplate="{DataTemplate PacienteMedicina:VFormReceta}"
+  Title="Registro de Receta">
+        <ShellContent.Icon>
+            <FontImageSource
+    FontFamily="Icons"
+    Glyph="&#xF15C;"
+    Color="Black"
+    />
+        </ShellContent.Icon>
+    </ShellContent>
+</Shell>

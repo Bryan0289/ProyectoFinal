@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Pacientes="clr-namespace:ProyectoFinal.Views.Paciente"
+        xmlns:Control="clr-namespace:ProyectoFinal.Views.Control"
+       xmlns:PacienteMedicina="clr-namespace:ProyectoFinal.Views.PacienteMedicina"
+       x:Class="ProyectoFinal.Views.AppShell.AppShellPaciente"
+       >
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="Black" HeightRequest="150">
+            <Image
+            Aspect="AspectFill"
+            Opacity=".5"
+            Source="park.jpg" />
+            <Label
+            FontFamily="KanitB"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            Text="Programa"
+            TextColor="White"
+            VerticalOptions="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Control">
+        <FlyoutItem.Icon>
+            <FontImageSource
+            FontFamily="Icons"
+            Glyph="&#xE800;"
+            Color="Black"
+            />
+        </FlyoutItem.Icon>
+        
+            
+        <ShellContent ContentTemplate="{DataTemplate Control:VListaInsu}"
+          Title="Insulina">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="Icons"
+                         Glyph="&#xF0F1;"
+                         Color="Black"
+                         />
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent ContentTemplate="{DataTemplate Control:VListaPre}"
+                  Title="Presión">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="Icons"
+                         Glyph="&#xF21E;"
+                         Color="Black"
+                         />
+            </ShellContent.Icon>
+        </ShellContent>
+        
+    </FlyoutItem>
+    <ShellContent ContentTemplate="{DataTemplate PacienteMedicina:VListaRecetas}"
+          Title="Lista de Resetas">
+        <ShellContent.Icon>
+
+
+            <FontImageSource
+            FontFamily="Icons"
+            Glyph="&#xF2BD;"
+            Color="Black"
+            />
+        </ShellContent.Icon>
+    </ShellContent>
+    <MenuItem Clicked="btnSalir_Clicked" Text="Salir">
+    <MenuItem.IconImageSource>
+        <FontImageSource
+                FontFamily="Icons"/>
+    </MenuItem.IconImageSource>
+    </MenuItem>
+
+</Shell>
