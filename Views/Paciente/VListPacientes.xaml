@@ -8,30 +8,38 @@
         
             <CollectionView x:Name="ListarPacientes"
                         Grid.Row="0"
-                            SelectionMode="Single"
-                            Margin="0,1,0,0"
-                            SelectionChanged="onChangeItem">
+                            SelectionMode="Single">
             <CollectionView.ItemTemplate >
                 <DataTemplate>
                     <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItem Text="Eliminar" 
+                           BackgroundColor="Pink"
+                                       x:Name="btnEliminar"
+                                       Clicked="btnEliminar_Clicked"
+                                       />
+                            <SwipeItem Text="Ver" 
+                           BackgroundColor="LightBlue"
+                                       x:Name="btnVer"
+                                       Clicked="btnVer_Clicked"
+                                       />
+                        </SwipeView.RightItems>
 
-                        <Frame CornerRadius="10"
-                               BackgroundColor="#0171cf"
-                               Padding="10"
+                        <Frame BackgroundColor="#0171cf"
                                >
                             
-                        <Grid ColumnDefinitions="*,2*" RowDefinitions="*,*" Margin="10">
-                                <Image Source="user.png"   Grid.RowSpan="2" 
-                                   HeightRequest="75"
-                                   WidthRequest="75"
-                                   >
+                        <Grid ColumnDefinitions="*,3*" RowDefinitions="*,*">
+                                <Image Source="user.png"   Grid.RowSpan="2"
+                                       HeightRequest="60"
+                                       WidthRequest="60"
+                                       >
                                     <Image.Clip>
-                                        <EllipseGeometry RadiusX="37.5" RadiusY="37.5" Center="37.5,37.5" />
+                                        <EllipseGeometry RadiusX="30" RadiusY="30" Center="30,30" />
                                     </Image.Clip>
                                 </Image>
 
-                            <Label Text="Paciente #1" FontSize="Title" Grid.Column="1"/>
-                            <Label Text="Fecha" FontSize="Small" Grid.Column="1" Grid.Row="1"/>
+                                <Label Text="{Binding NombreCompleto}" FontSize="Title" Grid.Column="1"/>
+                            <Label Text="{Binding Edad}" FontSize="Small" Grid.Column="1" Grid.Row="1"/>
                         </Grid>
                         </Frame>
                     </SwipeView>

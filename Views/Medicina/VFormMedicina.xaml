@@ -2,16 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoFinal.Views.Medicina.VFormMedicina"
-             Title="Formulario Medicina">
+             Title="Registro de Medicina">
     <ScrollView>
-        <StackLayout Padding="10">
-            <Label Text="Registro de Medicina"
-                 TextColor="#3d4a6d"
-                 TextTransform="Uppercase"
-                 FontAttributes="Bold"
-                 FontSize="25"
-                 HorizontalTextAlignment="Center"
-                 />
+        <StackLayout Padding="10,0,10,0">
             <Frame CornerRadius="10"
                  BackgroundColor="#0171cf"
          Padding="10"
@@ -38,35 +31,38 @@
                     <Entry x:Name="txtNombre"
                            Placeholder="Nombre"
                            Grid.Column="1"/>
-                    <Label Text="Presentación:"
+                    <Label Text="Description:"
                            VerticalTextAlignment="Center"
                            Grid.Row="1"/>
-                    <Entry x:Name="txtPresentación"
-                           Placeholder="Presentación"
+                    <Entry x:Name="txtDescription"
+                           Placeholder="Description"
                            Grid.Row="1"
                            Grid.Column="1"/>
-                    <Label Text="Unidad de Medida:"
+                    <Label Text="Dosificacion:"
                            VerticalTextAlignment="Center"
                            Grid.Row="2"/>
-                    <Picker x:Name="pkMedidas"
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            >
-                        <Picker.Items>
-                            <x:String>Medida 1</x:String>
-                        </Picker.Items>
-                    </Picker>
-                    <Label Text="Detalles:"
+                    <Entry x:Name="txtDosificacion"
+                           Placeholder="Dosificacion"
+                           Grid.Row="2"
+                           Grid.Column="1"/>
+                    <Label Text="Presentacion:"
        VerticalTextAlignment="Center"
        Grid.Row="3"/>
-                    <Entry x:Name="txtDetalles"
-       Placeholder="Detalles"
+                    <Entry x:Name="txtPresentacion"
+       Placeholder="Presentacion"
        Grid.Row="3"
        Grid.Column="1"/>
+                    <Label Text="Indicaciones:"
+VerticalTextAlignment="Center"
+Grid.Row="4"/>
+                    <Entry x:Name="txtIndicaciones"
+Placeholder="Indicaciones"
+Grid.Row="4"
+Grid.Column="1"/>
 
                     <Button  Text="Registrar"
                        x:Name="btnGuardar"
-                       Grid.Row="4"
+                       Grid.Row="5"
                        Grid.ColumnSpan="2"
                        Margin="20,10,20,0"
                        BackgroundColor="#3d4a6d"

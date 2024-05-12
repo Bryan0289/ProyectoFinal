@@ -17,10 +17,10 @@
         Margin="10"
      >
                 <Grid  ColumnDefinitions=".35*,.65*">
-                    <Label Text="Usuario"
+                    <Label Text="Paciente:"
                        VerticalTextAlignment="Center"
                        />
-                    <Picker x:Name="pkUsuarios"
+                    <Picker x:Name="pkPaciente"
                             Grid.Row="1"
                             Grid.Column="1"
                             >

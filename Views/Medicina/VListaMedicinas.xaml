@@ -8,24 +8,29 @@
 
         <CollectionView x:Name="ListarMedicina"
                     Grid.Row="0"
-                        SelectionMode="Single"
-                        Margin="0,1,0,0">
+                        SelectionMode="Single">
             <CollectionView.ItemTemplate >
                 <DataTemplate>
                     <SwipeView>
-
-                        <Frame CornerRadius="10"
+                        <SwipeView.RightItems>
+                            <SwipeItem Text="Eliminar"
+                                       BackgroundColor="Pink"
+                                       x:Name="btnEliminar"
+                                       Clicked="btnEliminar_Clicked"
+                                       />
+                            
+                        </SwipeView.RightItems>
+                        <Frame 
                            BackgroundColor="#0171cf"
-                           Padding="10"
                            >
 
-                            <Grid ColumnDefinitions="*,2*" RowDefinitions="*,*" Margin="10">
+                            <Grid ColumnDefinitions="*,2*" RowDefinitions="*,*">
                                 <Image Source="medicina.png"   Grid.RowSpan="2" 
                                HeightRequest="75"
                                WidthRequest="75"/>
 
-                                <Label Text="Medicina #1" FontSize="Title" Grid.Column="1"/>
-                                <Label Text="Detalle" FontSize="Small" Grid.Column="1" Grid.Row="1"/>
+                                <Label Text="{Binding Nombre}" FontSize="Title" Grid.Column="1"/>
+                                <Label Text="{Binding Descripcion}" FontSize="Small" Grid.Column="1" Grid.Row="1"/>
                             </Grid>
                         </Frame>
                     </SwipeView>

@@ -16,7 +16,7 @@
     Padding="10"
     Margin="10">
                 <Grid  ColumnDefinitions=".35*,.65*">
-                    <Label Text="Usuario"
+                    <Label Text="Paciente:"
                    VerticalTextAlignment="Center"
                    />
                     <Picker x:Name="pkUsuarios"
@@ -40,7 +40,7 @@
    Margin="10"
 >
                 <Grid  ColumnDefinitions=".35*,.65*">
-                    <Label Text="Medicina"
+                    <Label Text="Medicina:"
                   VerticalTextAlignment="Center"
                   />
                     <Picker x:Name="pkMedicina"
@@ -55,20 +55,41 @@
                 </Grid>
             </Frame>
             <Frame CornerRadius="10"
-           BackgroundColor="#0171cf"
-   Padding="10"
-   Margin="10"
->
-                <Grid  ColumnDefinitions=".35*,.65*">
+                   BackgroundColor="#0171cf"
+                   Padding="10"
+                   Margin="10"
+                   >
+                <Grid  ColumnDefinitions=".35*,.65*" RowDefinitions="*,*,*,*">
+                    <Label Text="Hora de Inicio:"
+                           VerticalTextAlignment="Center"
+                           />
+                    <Entry x:Name="txtHoraInicio" 
+                           Placeholder="Fecha (dd/mm/aaaa)" 
+                           Grid.Column="1"/>
+                    <Label Text="Frecuencia:"
+                           VerticalTextAlignment="Center"
+                           Grid.Row="1"/>
+
+                    <Entry x:Name="txtIntervalo"
+                           Placeholder="hh:mm" 
+                           Grid.Column="1"
+                           Grid.Row="1"/>
+                    <Label Text="Duracion:"
+                           VerticalTextAlignment="Center"
+                           Grid.Row="2"/>
+
+                    <Entry x:Name="txtDuracionDias"
+                           Placeholder="Duracion"
+                           Grid.Column="1"
+                           Grid.Row="2"/>
+
                     <Button  Text="Guardar"
-   x:Name="btnGuardar"
-   Grid.Row="5"
-   Grid.ColumnSpan="2"
-   Margin="20,10,20,0"
-   BackgroundColor="#3d4a6d"
-   />
-
-
+                             x:Name="btnGuardar"
+                             Grid.Row="3"
+                             Grid.ColumnSpan="2"
+                             Margin="20,10,20,0"
+                             BackgroundColor="#3d4a6d"
+                             />
                 </Grid>
             </Frame>
         </StackLayout>
