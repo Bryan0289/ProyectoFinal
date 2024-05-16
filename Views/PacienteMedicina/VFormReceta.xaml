@@ -22,14 +22,9 @@
                     <Picker x:Name="pkUsuarios"
                         Grid.Row="1"
                         Grid.Column="1"
+                             ItemDisplayBinding="{Binding NombreCompleto}"
                         >
-                        <Picker.Items>
-                            <x:String>Luis Perez</x:String>
-                            <x:String>Alejandra Lema</x:String>
-                            <x:String>Karen Villamarin</x:String>
-                            <x:String>Karol Reyes</x:String>
-                            <x:String>Juan Lopez</x:String>
-                        </Picker.Items>
+                       
                     </Picker>
 
                 </Grid>
@@ -46,10 +41,9 @@
                     <Picker x:Name="pkMedicina"
                        Grid.Row="1"
                        Grid.Column="1"
+                            ItemDisplayBinding="{Binding Nombre}"
                        >
-                        <Picker.Items>
-                            <x:String>Medicina 1</x:String>
-                        </Picker.Items>
+                       
                     </Picker>
 
                 </Grid>
@@ -89,6 +83,7 @@
                              Grid.ColumnSpan="2"
                              Margin="20,10,20,0"
                              BackgroundColor="#3d4a6d"
+                             Clicked="btnGuardar_Clicked"
                              />
                 </Grid>
             </Frame>

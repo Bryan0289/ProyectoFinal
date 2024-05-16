@@ -17,6 +17,7 @@
                                        BackgroundColor="Pink"
                                        x:Name="btnEliminar"
                                        Clicked="btnEliminar_Clicked"
+                                       CommandParameter="{Binding Id}"
                                        />
                             
                         </SwipeView.RightItems>
