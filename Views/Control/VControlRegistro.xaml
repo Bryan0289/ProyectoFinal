@@ -4,13 +4,7 @@
              x:Class="ProyectoFinal.Views.Control.VControlRegistro">
     <ScrollView>
         <StackLayout Padding="10">
-            <Label Text="Registro de Niveles Insulina y de Presión Arterial"
-                TextColor="#3d4a6d"
-                TextTransform="Uppercase"
-                FontAttributes="Bold"
-                FontSize="25"
-                HorizontalTextAlignment="Center"
-                />
+            
             <Frame CornerRadius="10"
                 BackgroundColor="#0171cf"
         Padding="10"
@@ -41,7 +35,7 @@
         BackgroundColor="#0171cf"
         >
                 <Grid ColumnDefinitions=".35*,.65*"
-           RowDefinitions="*,*,*,*,*">
+           RowDefinitions="*,*,*">
                     <Label Text="Insulina:"
                 VerticalTextAlignment="Center"/>
                     <Entry x:Name="txtNombre"
@@ -53,27 +47,13 @@
                 VerticalTextAlignment="Center"/>
                     <Entry x:Name="txtApellido"
                 Placeholder="Presión Arterial"
+                           Keyboard="Numeric"
                 Grid.Row="1"
                 Grid.Column="1"/>
-                    <Label Text="Altura:"
-                           Padding="0,10,0,0"
-                           Grid.Row="2"
-                           VerticalTextAlignment="Center"/>
-                    <Entry x:Name="txtAltura"
-Placeholder="Altura"
-Grid.Row="2"
-Grid.Column="1"/>
-                    <Label Text="Peso:"
-                           Padding="0,10,0,0"
-                           Grid.Row="3"
-                           VerticalTextAlignment="Center"/>
-                    <Entry x:Name="txtPeso"
-Placeholder="Peso"
-Grid.Row="3"
-Grid.Column="1"/>
+                 
                     <Button  Text="Guardar"
                       x:Name="btnGuardar"
-                      Grid.Row="5"
+                      Grid.Row="2"
                       Grid.ColumnSpan="2"
                       Margin="20,10,20,0"
                       BackgroundColor="#3d4a6d"

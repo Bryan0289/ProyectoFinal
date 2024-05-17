@@ -13,16 +13,33 @@
                 <DataTemplate>
                     <SwipeView>
                         <SwipeView.RightItems>
-                            <SwipeItem Text="Eliminar" 
+                            <SwipeItem 
                            BackgroundColor="Pink"
                                        x:Name="btnEliminar"
                                        Clicked="btnEliminar_Clicked"
-                                       />
-                            <SwipeItem Text="Ver" 
+                                       >
+                                <SwipeItem.IconImageSource>
+                                    <FontImageSource FontFamily="Icons"
+                                                     Glyph="&#xE805;"
+                                                     Color="Black"
+                                                     />
+                                    
+                                </SwipeItem.IconImageSource>
+                                
+                            </SwipeItem>
+                            <SwipeItem 
                            BackgroundColor="LightBlue"
                                        x:Name="btnVer"
                                        Clicked="btnVer_Clicked"
-                                       />
+                                       >
+                                <SwipeItem.IconImageSource>
+                                    <FontImageSource FontFamily="Icons"
+                                                     Glyph="&#xE804;"
+                                                     Color="Black"
+                                                     />
+                                    
+                                </SwipeItem.IconImageSource>
+                            </SwipeItem>
                         </SwipeView.RightItems>
 
                         <Frame BackgroundColor="#0171cf"

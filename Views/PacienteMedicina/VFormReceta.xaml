@@ -4,13 +4,7 @@
              x:Class="ProyectoFinal.Views.PacienteMedicina.VFormReceta">
     <ScrollView>
         <StackLayout Padding="10">
-            <Label Text="Registro de Receta"
-            TextColor="#3d4a6d"
-            TextTransform="Uppercase"
-            FontAttributes="Bold"
-            FontSize="25"
-            HorizontalTextAlignment="Center"
-            />
+            
             <Frame CornerRadius="10"
             BackgroundColor="#0171cf"
     Padding="10"

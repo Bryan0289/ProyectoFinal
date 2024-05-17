@@ -22,36 +22,16 @@
         </Grid>
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Control">
-        <FlyoutItem.Icon>
-            <FontImageSource
-            FontFamily="Icons"
-            Glyph="&#xE800;"
-            Color="Black"
-            />
-        </FlyoutItem.Icon>
-        
-            
-        <ShellContent ContentTemplate="{DataTemplate Control:VListaInsu}"
-          Title="Insulina">
-            <ShellContent.Icon>
-                <FontImageSource FontFamily="Icons"
-                         Glyph="&#xF0F1;"
-                         Color="Black"
-                         />
-            </ShellContent.Icon>
-        </ShellContent>
-        <ShellContent ContentTemplate="{DataTemplate Control:VListaPre}"
-                  Title="Presión">
-            <ShellContent.Icon>
-                <FontImageSource FontFamily="Icons"
+    
+    <ShellContent ContentTemplate="{DataTemplate Control:VListaPre}"
+                  Title="Control">
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="Icons"
                          Glyph="&#xF21E;"
                          Color="Black"
                          />
             </ShellContent.Icon>
         </ShellContent>
-        
-    </FlyoutItem>
     <ShellContent ContentTemplate="{DataTemplate PacienteMedicina:VListaRecetas}"
           Title="Lista de Resetas">
         <ShellContent.Icon>
@@ -59,7 +39,7 @@
 
             <FontImageSource
             FontFamily="Icons"
-            Glyph="&#xF2BD;"
+            Glyph="&#xE801;"
             Color="Black"
             />
         </ShellContent.Icon>
@@ -67,7 +47,9 @@
     <MenuItem Clicked="btnSalir_Clicked" Text="Salir">
     <MenuItem.IconImageSource>
         <FontImageSource
-                FontFamily="Icons"/>
+                FontFamily="Icons"
+            Glyph="&#xF2BD;"
+            Color="Black"/>
     </MenuItem.IconImageSource>
     </MenuItem>
 

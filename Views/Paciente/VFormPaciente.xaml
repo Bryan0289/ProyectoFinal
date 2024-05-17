@@ -2,26 +2,47 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoFinal.Views.Paciente.VFormPaciente"
-             Title="Formulario Pacientes">
+             Title="Registro de Usuario">
     <ScrollView>
         <StackLayout Padding="10">
-            <Label Text="Registro de Usuario"
-                 TextColor="#3d4a6d"
-                 TextTransform="Uppercase"
-                 FontAttributes="Bold"
-                 FontSize="25"
-                 HorizontalTextAlignment="Center"
-                 />
             <Frame CornerRadius="10"
                  BackgroundColor="#0171cf"
-         Padding="10"
-         Margin="10"
-      >
-                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                   Padding="10"
+                   Margin="10"
+                   >
+                <Grid RowDefinitions="*,*" ColumnDefinitions="4*,*">
                     
-                <Image Source="user.png" Grid.ColumnSpan="2"/>
-                <Button Text="Tomar Foto" Grid.Row="1" Margin="5"/>
-                <Button Text="Seleccionar" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                <Image Source="user.png" Grid.RowSpan="2" x:Name="pacienteImg"
+                       WidthRequest="200" HeightRequest="200"/>
+                    <Button Grid.Column="1" Margin="5,20,5,20"
+                            x:Name="btnTomarF"
+                            Clicked="btnTomarF_Clicked">
+                        <Button.ImageSource>
+                            
+    
+                        <FontImageSource FontFamily="Icons"
+                                         Glyph="&#xE806;"
+                                         Color="Black"
+                                         Size="20"
+                                         />
+                        </Button.ImageSource>
+                    </Button>
+                    <Button Grid.Column="1"
+                            Grid.Row="1"
+                            Margin="5,20,5,20"
+                            x:Name="btnSeleccionarF"
+                            Clicked="btnSeleccionarF_Clicked"
+                            >
+                        <Button.ImageSource>
+
+
+                            <FontImageSource FontFamily="Icons"
+                                             Glyph="&#xE807;"
+                                             Color="Black"
+                                             Size="20"
+                                             />
+                        </Button.ImageSource>
+                    </Button>
                 </Grid>
             </Frame>
 
@@ -30,7 +51,7 @@
          BackgroundColor="#0171cf"
          >
                 <Grid ColumnDefinitions=".35*,.65*"
-            RowDefinitions="*,*,*,*,*">
+            RowDefinitions="*,*,*,*,*,*,*">
                     <Label Text="Nombre:"
                  VerticalTextAlignment="Center"/>
                     <Entry x:Name="txtNombre"
@@ -58,9 +79,25 @@
                      Grid.Row="3"
                      Grid.Column="1"
                      />
+                    <Label Text="Altura:"
+                           VerticalTextAlignment="Center"
+                           Grid.Row="4"/>
+                    <Entry x:Name="txtAltura"
+                           Placeholder="Altura"
+                           Grid.Row="4"
+                           Grid.Column="1"
+                           />
+                    <Label Text="Peso:"
+                           VerticalTextAlignment="Center"
+                           Grid.Row="5"/>
+                    <Entry x:Name="txtPeso"
+                           Placeholder="Peso"
+                           Grid.Row="5"
+                           Grid.Column="1"
+                           />
                     <Button  Text="Registrar"
                        x:Name="btnGuardar"
-                       Grid.Row="4"
+                       Grid.Row="6"
                        Grid.ColumnSpan="2"
                        Margin="20,10,20,0"
                        BackgroundColor="#3d4a6d"
