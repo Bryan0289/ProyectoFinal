@@ -94,6 +94,7 @@ Grid.Column="1"/>
                        Grid.ColumnSpan="2"
                        Margin="20,10,20,0"
                        BackgroundColor="#3d4a6d"
+                             Clicked="btnGuardar_Clicked"
                        />
 
 

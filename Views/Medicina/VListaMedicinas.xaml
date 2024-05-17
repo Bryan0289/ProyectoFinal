@@ -16,15 +16,9 @@
                             <SwipeItem BackgroundColor="Pink"
                                        x:Name="btnEliminar"
                                        Clicked="btnEliminar_Clicked"
-                                       >
-                                <SwipeItem.IconImageSource>
-                                    <FontImageSource FontFamily="Icons"
-                                                     Glyph="&#xE805;"
-                                                     Color="Black"
-                                                     />
-                                </SwipeItem.IconImageSource>
-                            </SwipeItem>
-
+                                       CommandParameter="{Binding Id}"
+                                       />
+                            
                         </SwipeView.RightItems>
                         <Frame 
                            BackgroundColor="#0171cf"
