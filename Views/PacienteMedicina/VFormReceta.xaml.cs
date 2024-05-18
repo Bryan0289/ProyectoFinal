@@ -9,9 +9,9 @@ public partial class VFormReceta : ContentPage
 {
     List<MedicinaModel> listaMedicina = new List<MedicinaModel>();
     List<PacienteModel> listaPacientes = new List<PacienteModel>();
-    private const string url = "http://192.168.100.12/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
-    private const string url2 = "http://192.168.100.12/APPS/Back/Controlador/controlador.php?ListaMedicina=true";
-    private const string url3 = "http://192.168.100.12/APPS/Back/Controlador/controlador.php?AddDosis=true";
+    private const string url = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
+    private const string url2 = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?ListaMedicina=true";
+    private const string url3 = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?AddDosis=true";
 
     private readonly HttpClient medicina = new HttpClient();
      private ObservableCollection<PacienteModel> est;

@@ -5,11 +5,13 @@ namespace ProyectoFinal.Views.PacienteMedicina;
 public partial class VListaRecetas : ContentPage
 {
 
+    public PacienteModel Paciente { get; set; }
     List<Recordatorio> listarRecordatorio
         = new List<Recordatorio>();
     public VListaRecetas()
 	{
 		InitializeComponent();
+        Paciente = App.Paciente;
         listarRecordatorio.Add(new Recordatorio
         {
             Id = 1,

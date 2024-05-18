@@ -69,9 +69,6 @@
 	  <MauiXaml Update="Views\Control\VControlRegistro.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Control\VListaInsu.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\Control\VListaPre.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

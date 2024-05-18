@@ -8,7 +8,7 @@ namespace ProyectoFinal.Views.Paciente;
 public partial class VListPacientes : ContentPage
 {
     List<PacienteModel> listaPacientes = new List<PacienteModel>();
-    private const string url = "http://192.168.100.12/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
+    private const string url = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
     private readonly HttpClient paciente = new HttpClient();
     private ObservableCollection<PacienteModel> est;
 
@@ -16,12 +16,7 @@ public partial class VListPacientes : ContentPage
 	{
 		InitializeComponent();
         ObtenerDatos();
-        /*
-        listaPacientes.Add(new PacienteModel { Nombre = "Paciente 1",Apellido="Paciente 1", FechaNac=DateTime.Today });
-        listaPacientes.Add(new PacienteModel { Nombre = "Paciente 2", Apellido = "Paciente 2", FechaNac = new DateTime() });
-        listaPacientes.Add(new PacienteModel { Nombre = "Paciente 2", Apellido = "Paciente 2", FechaNac = new DateTime() });
-
-        ListarPacientes.ItemsSource = listaPacientes;*/
+      
 
     }
     public async void ObtenerDatos()
@@ -29,7 +24,7 @@ public partial class VListPacientes : ContentPage
         var content = await paciente.GetStringAsync(url);
         List<PacienteModel> mostra = JsonConvert.DeserializeObject<List<PacienteModel>>(content);
         est = new ObservableCollection<PacienteModel>(mostra);
-        ListarPacientes.ItemsSource = est;
+        listaPaciente.ItemsSource = est;
     }
 
     private async void btnNewPaciente_Clicked(object sender, EventArgs e)
@@ -37,23 +32,24 @@ public partial class VListPacientes : ContentPage
         Navigation.PushAsync(new VFormPaciente());
     }
 
-    private void btnVer_Clicked(object sender, EventArgs e)
-    {
-        var app = (App)Application.Current;
-        app.CambiarShell("Paciente");
-
-    }
-
     private async void btnEliminar_Clicked(object sender, EventArgs e)
     {
-        var swipeItem = sender as SwipeItem;
-        var paciente = swipeItem.BindingContext as PacienteModel;
+
+
+        var paciente = (PacienteModel)(sender as MenuItem).CommandParameter;
         bool result = await DisplayAlert("Eliminar", "¿Estás seguro de que deseas eliminar al paciente " + paciente.NombreCompleto + "?", "Sí", "Cancelar");
 
         if (result)
         {
-            DisplayAlert("Ok","Eliminado","ok");
+            DisplayAlert("Ok", "Eliminado", "ok");
         }
+    }
 
+    private void listaPaciente_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        PacienteModel paciente = e.SelectedItem as PacienteModel;
+        var app = (App)Application.Current;
+        
+        app.CambiarShell("Paciente", paciente);
     }
 }

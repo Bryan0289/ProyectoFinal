@@ -16,7 +16,7 @@
             FontFamily="KanitB"
             FontSize="Large"
             HorizontalOptions="Center"
-            Text="Programa"
+            x:Name="lblNombre"
             TextColor="White"
             VerticalOptions="Center" />
         </Grid>
