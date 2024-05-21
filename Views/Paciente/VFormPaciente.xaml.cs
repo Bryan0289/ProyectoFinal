@@ -48,12 +48,23 @@ public partial class VFormPaciente : ContentPage
 
     private async void btnTomarF_Clicked(object sender, EventArgs e)
     {
-        var foto = await MediaPicker.CapturePhotoAsync();
+        
+            var photo = await MediaPicker.CapturePhotoAsync();
 
-        if (foto != null)
-        {
-            var memoriaStream = await foto.OpenReadAsync();
+            var customFileName = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+            if (photo != null)
+            {
+            var memoriaStream = await photo.OpenReadAsync();
             pacienteF.Source = ImageSource.FromStream(() => memoriaStream);
+            string cacheDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                string filePath = Path.Combine(cacheDirectory, customFileName);
+
+                using Stream photoStream = await photo.OpenReadAsync();
+                using FileStream fileStream = new FileStream(filePath, FileMode.Create);
+                await photoStream.CopyToAsync(fileStream);
+                
+                Console.WriteLine($"Foto guardada en: {filePath}");
+            
         }
     }
 
@@ -63,8 +74,17 @@ public partial class VFormPaciente : ContentPage
 
         if (foto != null)
         {
+            var customFileName = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
             var memoriaStream = await foto.OpenReadAsync();
             pacienteF.Source = ImageSource.FromStream(() => memoriaStream);
+            string cacheDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string filePath = Path.Combine(cacheDirectory, customFileName);
+
+            using Stream photoStream = await foto.OpenReadAsync();
+            using FileStream fileStream = new FileStream(filePath, FileMode.Create);
+            await photoStream.CopyToAsync(fileStream);
+
+            Console.WriteLine($"Foto guardada en: {filePath}");
         }
     }
 }
