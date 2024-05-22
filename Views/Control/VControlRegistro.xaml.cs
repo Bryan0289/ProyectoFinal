@@ -11,15 +11,16 @@ public partial class VControlRegistro : ContentPage
     List<PacienteModel> listaPacientes = new List<PacienteModel>();
     private readonly HttpClient paciente = new HttpClient();
     private ObservableCollection<PacienteModel> est;
+
     private string ip;
     private string url;
     Config serverip = new Config();
     public VControlRegistro()
 	{
 
-        ip = serverip.ipserver;
-        url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
-        InitializeComponent();
+
+    url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
+    InitializeComponent();
         ObtenerDatos();
 
     }
