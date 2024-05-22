@@ -41,12 +41,16 @@ public partial class VControlRegistro : ContentPage
             var pacie = est[id_paciente];
             var insulina = txtInsulina.Text;
             var presion = txtArterial.Text;
-            DisplayAlert("alert", pacie.Id.ToString(), "ok");
+            var altura = txtAltura.Text;
+            var peso = txtPeso.Text;
+            
             var parametros = new Dictionary<string, string>
             {
                 { "paciente",pacie.Id.ToString() },
                 { "insulina", insulina},
                 { "presion", presion },
+                { "altura", altura },
+                { "peso",peso }
             };
 
             var content = new FormUrlEncodedContent(parametros);
