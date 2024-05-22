@@ -1,15 +1,21 @@
 using Newtonsoft.Json;
+using ProyectoFinal.Models;
 
 namespace ProyectoFinal.Views.Paciente;
 
 public partial class VFormPaciente : ContentPage
 {
-    private const string url = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?AddPaciente=true";
+    private string ip;
+    private string url;
+    private string filePath;
     private readonly HttpClient paciente = new HttpClient();
+    Config serverip = new Config();
 
     public VFormPaciente()
-	{
-		InitializeComponent();
+    {
+        ip = serverip.ipserver;
+        url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?AddPaciente=true";
+        InitializeComponent();
 	}
 
     private async void btnGuardar_Clicked(object sender, EventArgs e)
@@ -24,7 +30,8 @@ public partial class VFormPaciente : ContentPage
                 { "nombre", nombre },
                 { "apellido", apellido },
                 { "FechaN", FechaN },
-                { "detalle", detalle }
+                { "detalle", detalle },
+                { "foto",   filePath}
             };
 
         var content = new FormUrlEncodedContent(parametros);
@@ -57,7 +64,7 @@ public partial class VFormPaciente : ContentPage
             var memoriaStream = await photo.OpenReadAsync();
             pacienteF.Source = ImageSource.FromStream(() => memoriaStream);
             string cacheDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                string filePath = Path.Combine(cacheDirectory, customFileName);
+                filePath = Path.Combine(cacheDirectory, customFileName);
 
                 using Stream photoStream = await photo.OpenReadAsync();
                 using FileStream fileStream = new FileStream(filePath, FileMode.Create);
@@ -78,7 +85,7 @@ public partial class VFormPaciente : ContentPage
             var memoriaStream = await foto.OpenReadAsync();
             pacienteF.Source = ImageSource.FromStream(() => memoriaStream);
             string cacheDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string filePath = Path.Combine(cacheDirectory, customFileName);
+            filePath = Path.Combine(cacheDirectory, customFileName);
 
             using Stream photoStream = await foto.OpenReadAsync();
             using FileStream fileStream = new FileStream(filePath, FileMode.Create);

@@ -9,12 +9,17 @@ namespace ProyectoFinal.Views.Control;
 public partial class VControlRegistro : ContentPage
 {
     List<PacienteModel> listaPacientes = new List<PacienteModel>();
-    private const string url = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
     private readonly HttpClient paciente = new HttpClient();
     private ObservableCollection<PacienteModel> est;
+    private string ip;
+    private string url;
+    Config serverip = new Config();
     public VControlRegistro()
 	{
-		InitializeComponent();
+
+        ip = serverip.ipserver;
+        url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
+        InitializeComponent();
         ObtenerDatos();
 
     }
@@ -29,7 +34,7 @@ public partial class VControlRegistro : ContentPage
 
     private async  void btnGuardar_Clicked(object sender, EventArgs e)
     {
-        string url = "http://192.168.100.12/APPS/Back/Controlador/controlador.php?AddTriaje=true";
+        string url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?AddTriaje=true";
         var id_paciente = pkPaciente.SelectedIndex;
         if (id_paciente != -1)
         {

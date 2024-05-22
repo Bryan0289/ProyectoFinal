@@ -93,4 +93,6 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionProyectoFinalHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+
 </Project>

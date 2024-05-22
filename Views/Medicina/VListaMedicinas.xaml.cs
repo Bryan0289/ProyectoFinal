@@ -9,14 +9,18 @@ namespace ProyectoFinal.Views.Medicina;
 public partial class VListaMedicinas : ContentPage
 {
     List<MedicinaModel> listaMedicina = new List<MedicinaModel>();
-    private const string url = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?ListaMedicina=true";
     private readonly HttpClient medicina = new HttpClient();
     private ObservableCollection<MedicinaModel> est;
+    Config serverip = new Config();
+    private string ip;
+    private string url;
 
 
     public VListaMedicinas()
-	{
-		InitializeComponent();
+    {
+        ip = serverip.ipserver;
+        url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?ListaMedicina=true";
+        InitializeComponent();
         ObtenerDatos();
            
     }

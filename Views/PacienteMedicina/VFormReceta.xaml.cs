@@ -1,24 +1,32 @@
 using Newtonsoft.Json;
 using ProyectoFinal.Models;
 using ProyectoFinal.Views.Paciente;
+using System;
 using System.Collections.ObjectModel;
 
 namespace ProyectoFinal.Views.PacienteMedicina;
 
 public partial class VFormReceta : ContentPage
 {
+    private string ip;
+    private string url;
+    private string url2;
+    private string url3;
     List<MedicinaModel> listaMedicina = new List<MedicinaModel>();
     List<PacienteModel> listaPacientes = new List<PacienteModel>();
-    private const string url = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
-    private const string url2 = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?ListaMedicina=true";
-    private const string url3 = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?AddDosis=true";
+    Config serverip = new Config();
 
     private readonly HttpClient medicina = new HttpClient();
-     private ObservableCollection<PacienteModel> est;
+    private ObservableCollection<PacienteModel> est;
     private ObservableCollection<MedicinaModel> est2;
     public VFormReceta()
 	{
-		InitializeComponent();
+
+        ip = serverip.ipserver;
+        url = "http://" + ip + "/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
+        url2 = "http://" + ip + "/APPS/Back/Controlador/controlador.php?ListaMedicina=true";
+        url3 = "http://" + ip +"/APPS/Back/Controlador/controlador.php?AddDosis=true";
+        InitializeComponent();
         ObtenerDatos();
         ObtenerDatosM();
 

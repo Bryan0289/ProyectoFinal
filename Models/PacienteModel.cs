@@ -18,6 +18,7 @@ namespace ProyectoFinal.Models
         public string Altura { get; set; }
         public string Detalle { get; set; }
 
+        public string Foto { get; set; }
         public List<TriajeModel> Triajes { get; set; }
 
         public string NombreCompleto => $"{Nombre} {Apellido}";

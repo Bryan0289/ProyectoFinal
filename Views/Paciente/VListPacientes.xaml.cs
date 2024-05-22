@@ -8,13 +8,18 @@ namespace ProyectoFinal.Views.Paciente;
 public partial class VListPacientes : ContentPage
 {
     List<PacienteModel> listaPacientes = new List<PacienteModel>();
-    private const string url = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
+    private  string url;
+    private string ip;
     private readonly HttpClient paciente = new HttpClient();
     private ObservableCollection<PacienteModel> est;
+    Config serverip = new Config();
 
     public VListPacientes()
-	{
-		InitializeComponent();
+    {
+
+        ip = serverip.ipserver;
+        url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
+        InitializeComponent();
         ObtenerDatos();
       
 

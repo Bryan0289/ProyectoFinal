@@ -1,3 +1,4 @@
+using ProyectoFinal.Models;
 using ProyectoFinal.Views.Paciente;
 
 namespace ProyectoFinal.Views.Medicina;
@@ -5,10 +6,14 @@ namespace ProyectoFinal.Views.Medicina;
 public partial class VFormMedicina : ContentPage
 {
 
+    private string ip;
+    private string url;
     private readonly HttpClient paciente = new HttpClient();
+    Config serverip = new Config();
     public VFormMedicina()
 	{
-		InitializeComponent();
+        ip = serverip.ipserver;
+        InitializeComponent();
 	}
 
     private async  void btnGuardar_Clicked(object sender, EventArgs e)
@@ -18,7 +23,7 @@ public partial class VFormMedicina : ContentPage
 		var dosis = txtDosificacion.Text;
 		var prese = txtPresentacion.Text;
 
-        string url = "http://192.168.100.12/APPS/Back/Controlador/controlador.php?AddMedicina=true";
+        string url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?AddMedicina=true";
 		try
 		{
             var parametros = new Dictionary<string, string>
