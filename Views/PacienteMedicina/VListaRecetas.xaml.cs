@@ -58,7 +58,7 @@ public partial class VListaRecetas : ContentPage
     private async void btnEliminar_Clicked(object sender, EventArgs e)
     {
         var paciente = (PacienteModel)(sender as MenuItem).CommandParameter;
-        bool result = await DisplayAlert("Eliminar", "¿Estás seguro de que deseas eliminar la receta " + paciente.NombreCompleto + "?", "Sí", "Cancelar");
+        bool result = await DisplayAlert("Eliminar", "¿Estás seguro de que deseas eliminar la receta" + paciente.NombreCompleto + "?", "Sí", "Cancelar");
 
         if (result)
         {

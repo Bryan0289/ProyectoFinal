@@ -9,15 +9,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ViewCell.ContextActions>
-                            <MenuItem x:Name="btnDelete"
-                                   Text="Eliminar"
-                                   IsDestructive="True"
-                                   Clicked="btnDelete_Clicked"
-                                   CommandParameter="{Binding .}">
-
-                            </MenuItem>
-                        </ViewCell.ContextActions>
+                        
                         <StackLayout Padding="15,0">
                             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" Margin="0,10,0,0">
                                 <Label Text="Nivel de Insulina" HorizontalTextAlignment="Center" FontSize="Body" Grid.Column="0"/>

@@ -19,7 +19,7 @@ namespace ProyectoFinal.Models
         public string FechaHum{
             get{
                 return Fecha.Humanize();
-                }
+            }
         }
     }
 }
