@@ -29,19 +29,23 @@ public partial class VControlRegistro : ContentPage
 
     private async  void btnGuardar_Clicked(object sender, EventArgs e)
     {
-        string url = "http://192.168.100.12/APPS/Back/Controlador/controlador.php?AddTriaje=true";
+        string url = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?AddTriaje=true";
         var id_paciente = pkPaciente.SelectedIndex;
         if (id_paciente != -1)
         {
             var pacie = est[id_paciente];
             var insulina = txtInsulina.Text;
             var presion = txtArterial.Text;
-            DisplayAlert("alert", pacie.Id.ToString(), "ok");
+            var altura = txtAltura.Text;
+            var peso = txtPeso.Text;
+            
             var parametros = new Dictionary<string, string>
             {
                 { "paciente",pacie.Id.ToString() },
                 { "insulina", insulina},
                 { "presion", presion },
+                { "altura", altura },
+                { "peso",peso }
             };
 
             var content = new FormUrlEncodedContent(parametros);

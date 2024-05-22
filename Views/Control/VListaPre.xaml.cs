@@ -9,6 +9,8 @@ public partial class VListaPre : ContentPage
 	{
 		InitializeComponent();
         Paciente = App.Paciente;
+        
+
 
         PacienteModel paciente1 = new PacienteModel { Id = 1, Nombre = "Juan Perez" };
         PacienteModel paciente2 = new PacienteModel { Id = 2, Nombre = "Maria Lopez" };
@@ -38,8 +40,4 @@ public partial class VListaPre : ContentPage
 
     }
 
-    private void btnDelete_Clicked(object sender, EventArgs e)
-    {
-
-    }
 }

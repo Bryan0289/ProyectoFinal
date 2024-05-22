@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProyectoFinal.Views.PacienteMedicina.VListaRecetas"
              NavigationPage.HasNavigationBar="False"
-             Title="Lista de Recordatorios">
+             Title="Lista de Recetas">
     <VerticalStackLayout>
         <ListView x:Name="listaReceta" HasUnevenRows="True" SelectionMode="None" >
             <ListView.ItemTemplate>
