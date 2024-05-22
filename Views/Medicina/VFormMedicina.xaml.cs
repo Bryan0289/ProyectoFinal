@@ -8,6 +8,7 @@ public partial class VFormMedicina : ContentPage
 
     private string ip;
     private string url;
+    private string filePath;
     private readonly HttpClient paciente = new HttpClient();
     Config serverip = new Config();
     public VFormMedicina()
@@ -32,6 +33,7 @@ public partial class VFormMedicina : ContentPage
                 { "descripcion",des},
                 { "dosis", dosis },
                 { "presentacion", prese },
+                { "foto", filePath },
             };
 
             var content = new FormUrlEncodedContent(parametros);
@@ -42,7 +44,7 @@ public partial class VFormMedicina : ContentPage
                 var respuesta = await response.Content.ReadAsStringAsync();
                 if (respuesta == "1")
                 {
-                    await DisplayAlert("Alerta", "Medicina registrada", "OK");
+                    await DisplayAlert("Guardado", "Medicina registrada", "OK");
                     await Navigation.PushAsync(new VListaMedicinas());
                 }
                 Console.WriteLine(respuesta);
@@ -71,7 +73,7 @@ public partial class VFormMedicina : ContentPage
             var memoriaStream = await photo.OpenReadAsync();
             medicinaF.Source = ImageSource.FromStream(() => memoriaStream);
             string cacheDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string filePath = Path.Combine(cacheDirectory, customFileName);
+            filePath = Path.Combine(cacheDirectory, customFileName);
 
             using Stream photoStream = await photo.OpenReadAsync();
             using FileStream fileStream = new FileStream(filePath, FileMode.Create);
@@ -92,7 +94,7 @@ public partial class VFormMedicina : ContentPage
             var memoriaStream = await foto.OpenReadAsync();
             medicinaF.Source = ImageSource.FromStream(() => memoriaStream);
             string cacheDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string filePath = Path.Combine(cacheDirectory, customFileName);
+            filePath = Path.Combine(cacheDirectory, customFileName);
 
             using Stream photoStream = await foto.OpenReadAsync();
             using FileStream fileStream = new FileStream(filePath, FileMode.Create);

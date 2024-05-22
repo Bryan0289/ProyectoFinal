@@ -48,12 +48,12 @@ public partial class VListaMedicinas : ContentPage
 
         if (result)
         {
-            string url = "http://192.168.100.19/APPS/Back/Controlador/controlador.php?DeleteMedicina=true";
+            string url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?DeleteMedicina=true";
 
             var parametros = new Dictionary<string, string>
-        {
-            { "id",medicina.Id.ToString() }
-        };
+            {
+                { "id",medicina.Id.ToString() }
+            };
 
             var content = new FormUrlEncodedContent(parametros);
             var response = await med.PostAsync(url, content);

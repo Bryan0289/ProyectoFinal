@@ -40,13 +40,37 @@ public partial class VListPacientes : ContentPage
     private async void btnEliminar_Clicked(object sender, EventArgs e)
     {
 
-
+        HttpClient paci = new HttpClient();
         var paciente = (PacienteModel)(sender as MenuItem).CommandParameter;
         bool result = await DisplayAlert("Eliminar", "¿Estás seguro de que deseas eliminar al paciente " + paciente.NombreCompleto + "?", "Sí", "Cancelar");
 
         if (result)
         {
-            DisplayAlert("Ok", "Eliminado", "ok");
+            string url = "http://" + ip + "/APPS/Back/Controlador/controlador.php?DeletePaciente=true";
+
+            var parametros = new Dictionary<string, string>
+            {
+                { "id",paciente.Id.ToString() }
+            };
+
+            var content = new FormUrlEncodedContent(parametros);
+            var response = await paci.PostAsync(url, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var respuesta = await response.Content.ReadAsStringAsync();
+                if (respuesta == "1")
+                {
+                    await DisplayAlert("Eliminacion", "Registro Eliminado", "ok");
+
+                    ObtenerDatos();
+                }
+                Console.WriteLine(respuesta);
+            }
+            else
+            {
+                Console.WriteLine("Error en la solicitud. Código de estado: " + response.StatusCode);
+            }
         }
     }
 

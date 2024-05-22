@@ -1,16 +1,29 @@
+using Newtonsoft.Json;
 using ProyectoFinal.Models;
+using System.Collections.ObjectModel;
 
 namespace ProyectoFinal.Views.Control;
 
 public partial class VListaPre : ContentPage
 {
     public PacienteModel Paciente { get; set; }
+
+    private string ip;
+    private string url;
+    private readonly HttpClient triaje = new HttpClient();
+    private ObservableCollection<TriajeModel> est;
+    Config serverip = new Config();
     public VListaPre()
 	{
-		InitializeComponent();
-        Paciente = App.Paciente;
-        
 
+        ip = serverip.ipserver;
+        InitializeComponent();
+        Paciente = App.Paciente;
+
+        var id = Paciente.Id;
+        ObtenerDatos(id);
+
+        /*
 
         PacienteModel paciente1 = new PacienteModel { Id = 1, Nombre = "Juan Perez" };
         PacienteModel paciente2 = new PacienteModel { Id = 2, Nombre = "Maria Lopez" };
@@ -38,6 +51,17 @@ public partial class VListaPre : ContentPage
         };
         listaControl.ItemsSource = triajes;
 
+        */
+
+    }
+
+    public async void ObtenerDatos(int id)
+    {
+        string url = "http://" + ip + "/APPS/Back/Controlador/controlador.php?ListaTriaje=true&Id="+id;
+        var content = await triaje.GetStringAsync(url);
+        List<TriajeModel> mostra = JsonConvert.DeserializeObject<List<TriajeModel>>(content);
+        est = new ObservableCollection<TriajeModel>(mostra);
+        listaControl.ItemsSource = est;
     }
 
 }

@@ -18,9 +18,9 @@ public partial class VControlRegistro : ContentPage
     public VControlRegistro()
 	{
 
-
-    url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
-    InitializeComponent();
+        ip = serverip.ipserver;
+        url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?ListaPaciente=true";
+        InitializeComponent();
         ObtenerDatos();
 
     }

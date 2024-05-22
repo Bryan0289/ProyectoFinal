@@ -1,4 +1,6 @@
+using Newtonsoft.Json;
 using ProyectoFinal.Models;
+using System.Collections.ObjectModel;
 
 namespace ProyectoFinal.Views.PacienteMedicina;
 
@@ -6,12 +8,22 @@ public partial class VListaRecetas : ContentPage
 {
 
     public PacienteModel Paciente { get; set; }
-    List<Recordatorio> listarRecordatorio
-        = new List<Recordatorio>();
+    List<Recordatorio> listarRecordatorio  = new List<Recordatorio>();
+    private readonly HttpClient recordatorio = new HttpClient();
+
+    Config serverip = new Config();
+    private string ip;
+    private string url;
+    private ObservableCollection<Recordatorio> est;
     public VListaRecetas()
 	{
-		InitializeComponent();
+        ip = serverip.ipserver;
+        InitializeComponent();
         Paciente = App.Paciente;
+        var id = Paciente.Id;
+        ObtenerDatos(id);
+
+/*
         listarRecordatorio.Add(new Recordatorio
         {
             Id = 1,
@@ -52,17 +64,52 @@ public partial class VListaRecetas : ContentPage
         });
 
         listaReceta.ItemsSource = listarRecordatorio;
+    */
 
+    }
+
+    public async void ObtenerDatos(int id)
+    {
+        string url = "http://" + ip + "/APPS/Back/Controlador/controlador.php?ListaDosis=true&Id=" + id;
+        var content = await recordatorio.GetStringAsync(url);
+        List<Recordatorio> mostra = JsonConvert.DeserializeObject<List<Recordatorio>>(content);
+        est = new ObservableCollection<Recordatorio>(mostra);
+        listaReceta.ItemsSource = est;
     }
 
     private async void btnEliminar_Clicked(object sender, EventArgs e)
     {
-        var paciente = (PacienteModel)(sender as MenuItem).CommandParameter;
-        bool result = await DisplayAlert("Eliminar", "¿Estás seguro de que deseas eliminar la receta" + paciente.NombreCompleto + "?", "Sí", "Cancelar");
+        HttpClient recor = new HttpClient();
+        var recordatorio = (Recordatorio)(sender as MenuItem).CommandParameter;
+        bool result = await DisplayAlert("Eliminar", "¿Estás seguro de que deseas eliminar la receta" + recordatorio.Medicina.Nombre + "?", "Sí", "Cancelar");
 
         if (result)
         {
-            DisplayAlert("Ok", "Eliminado", "ok");
+            string url = "http://" + ip + "/APPS/Back/Controlador/controlador.php?DeleteDosis=true";
+
+            var parametros = new Dictionary<string, string>
+            {
+                { "id",recordatorio.Id.ToString() }
+            };
+
+            var content = new FormUrlEncodedContent(parametros);
+            var response = await recor.PostAsync(url, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var respuesta = await response.Content.ReadAsStringAsync();
+                if (respuesta == "1")
+                {
+                    await DisplayAlert("Eliminado", "Registro Eliminado", "ok");
+                    var id = recordatorio.Paciente.Id;
+                    ObtenerDatos(id);
+                }
+                Console.WriteLine(respuesta);
+            }
+            else
+            {
+                Console.WriteLine("Error en la solicitud. Código de estado: " + response.StatusCode);
+            }
         }
 
     }

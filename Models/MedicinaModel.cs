@@ -14,6 +14,7 @@ namespace ProyectoFinal.Models
         public string Dosificacion { get; set; }
         public string Presentacion { get; set; }
         public string Indicaciones {  get; set; }
+        public string Foto{ get;set; }
 
     }
 }
