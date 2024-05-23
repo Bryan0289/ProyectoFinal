@@ -29,6 +29,7 @@ public partial class VFormPaciente : ContentPage
         txtApellido.Text = paciente.Apellido;
         dpFecha.Date= paciente.FechaNac;
         txtDetalle.Text= paciente.Detalle;
+        filePath = paciente.Foto;
     }
 
     private async void btnGuardar_Clicked(object sender, EventArgs e)

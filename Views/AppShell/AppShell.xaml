@@ -18,7 +18,7 @@
                 FontFamily="KanitB"
                 FontSize="Large"
                 HorizontalOptions="Center"
-                Text="Programa"
+                Text="RENIPAM"
                 TextColor="White"
                 VerticalOptions="Center" />
         </Grid>

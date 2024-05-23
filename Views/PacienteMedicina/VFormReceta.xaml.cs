@@ -88,7 +88,8 @@ public partial class VFormReceta : ContentPage
                 if (respuesta == "1")
                 {
                     await DisplayAlert("Guardado", "Datos registrados", "OK");
-                    await Navigation.PushAsync(new VListPacientes());
+                    reset();
+                    
                 }
                 Console.WriteLine(respuesta);
             }
@@ -102,5 +103,14 @@ public partial class VFormReceta : ContentPage
         {
             DisplayAlert("alert", "Seleccione paciente", "ok");
         }
+    }
+    public void reset()
+    {
+        pkUsuarios.SelectedIndex = -1;
+        pkMedicina.SelectedIndex = -1;
+        dpFecha.Date = DateTime.Now;
+        txtIntervalo.Text = string.Empty;
+        txtDuracionDias.Text = string.Empty;
+
     }
 }

@@ -29,6 +29,7 @@ public partial class VFormMedicina : ContentPage
         txtDosificacion.Text = medicina.Dosificacion;
         txtPresentacion.Text= medicina.Presentacion;
         txtIndicaciones.Text = medicina.Indicaciones;
+        filePath = medicina.Foto;
     }
 
     private async  void btnGuardar_Clicked(object sender, EventArgs e)

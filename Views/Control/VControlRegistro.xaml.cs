@@ -76,7 +76,7 @@ public partial class VControlRegistro : ContentPage
                 if (respuesta == "1")
                 {
                     await DisplayAlert("Guardado", "Datos registrados", "OK");
-                    await Navigation.PushAsync(new VListPacientes());
+                    Reset();
                 }
                 Console.WriteLine(respuesta);
             }
@@ -90,5 +90,13 @@ public partial class VControlRegistro : ContentPage
         {
             DisplayAlert("alert", "Seleccione paciente", "ok");
         }
+    }
+    public void Reset()
+    {
+        pkPaciente.SelectedIndex = -1;
+        txtInsulina.Text = string.Empty;
+        txtArterial.Text = string.Empty;
+        txtAltura.Text = string.Empty;
+        txtPeso.Text = string.Empty;
     }
 }
