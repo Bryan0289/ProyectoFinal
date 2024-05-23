@@ -67,7 +67,7 @@ public partial class VFormReceta : ContentPage
         {
             var pa = est[index_pa];
             var me = est2[index_me];
-            var hora = dpFecha.Date.ToString();
+            var hora = dpFecha.Date.ToString("yyyy-MM-dd HH:mm:ss");
             var intervalo = txtIntervalo.Text;
             var duracion = txtDuracionDias.Text;
             var parametros = new Dictionary<string, string>
