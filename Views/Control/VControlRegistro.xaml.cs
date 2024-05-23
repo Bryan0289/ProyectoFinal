@@ -75,7 +75,7 @@ public partial class VControlRegistro : ContentPage
                 var respuesta = await response.Content.ReadAsStringAsync();
                 if (respuesta == "1")
                 {
-                    await DisplayAlert("Alerta", "Datos registrados", "OK");
+                    await DisplayAlert("Guardado", "Datos registrados", "OK");
                     await Navigation.PushAsync(new VListPacientes());
                 }
                 Console.WriteLine(respuesta);

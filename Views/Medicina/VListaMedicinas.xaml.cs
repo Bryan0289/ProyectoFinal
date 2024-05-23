@@ -69,7 +69,7 @@ public partial class VListaMedicinas : ContentPage
                 var respuesta = await response.Content.ReadAsStringAsync();
                 if (respuesta == "1")
                 {
-                    await DisplayAlert("Ok", "Eliminado", "ok");
+                    await DisplayAlert("Eliminado", "Registro eliminado", "ok");
 
                     ObtenerDatos();
                 }

@@ -60,6 +60,7 @@ public partial class VFormMedicina : ContentPage
         var des = txtDescription.Text;
         var dosis = txtDosificacion.Text;
         var prese = txtPresentacion.Text;
+        var indi = txtIndicaciones.Text;
 
         string url = "http://" + ip + "/APPS/Back/Controlador/controlador.php?AddMedicina=true";
         try
@@ -70,6 +71,7 @@ public partial class VFormMedicina : ContentPage
                 { "descripcion",des},
                 { "dosis", dosis },
                 { "presentacion", prese },
+                { "indicaciones", indi },
                 { "foto", filePath },
             };
 
@@ -100,6 +102,50 @@ public partial class VFormMedicina : ContentPage
     }
     private async void update()
     {
+        var nombre = txtNombre.Text;
+        var des = txtDescription.Text;
+        var dosis = txtDosificacion.Text;
+        var prese = txtPresentacion.Text;
+        var indi = txtIndicaciones.Text;
+
+        string url = "http://" + ip + "/APPS/Back/Controlador/controlador.php?UpdMedicina=true";
+        try
+        {
+            var parametros = new Dictionary<string, string>
+            {
+                { "Id",id.ToString() },
+                { "nombre",nombre },
+                { "descripcion",des},
+                { "dosis", dosis },
+                { "presentacion", prese },
+                { "indicaciones", indi },
+                { "foto", filePath },
+            };
+
+            var content = new FormUrlEncodedContent(parametros);
+            var response = await paciente.PostAsync(url, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var respuesta = await response.Content.ReadAsStringAsync();
+                if (respuesta == "1")
+                {
+                    await DisplayAlert("Editado", "Medicina Editada", "OK");
+                    await Navigation.PopToRootAsync();
+                }
+                Console.WriteLine(respuesta);
+            }
+            else
+            {
+                Console.WriteLine("Error en la solicitud. Código de estado: " + response.StatusCode);
+            }
+
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
 
     }
 
