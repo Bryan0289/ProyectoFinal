@@ -6,6 +6,7 @@ namespace ProyectoFinal.Views.Paciente;
 public partial class VFormPaciente : ContentPage
 {
     private string ip;
+    private int id;
     private string url;
     private string filePath;
     private readonly HttpClient paciente = new HttpClient();
@@ -17,8 +18,43 @@ public partial class VFormPaciente : ContentPage
         url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?AddPaciente=true";
         InitializeComponent();
 	}
+    public VFormPaciente(PacienteModel paciente)
+    {
+        ip = serverip.ipserver;
+        url = "http://" + ip + "/APPS/Back/Controlador/controlador.php?AddPaciente=true";
+        InitializeComponent();
+        id = paciente.Id;
+        pacienteF.Source = paciente.Foto;
+        txtNombre.Text = paciente.Nombre;
+        txtApellido.Text = paciente.Apellido;
+        dpFecha.Date= paciente.FechaNac;
+        txtDetalle.Text= paciente.Detalle;
+    }
 
     private async void btnGuardar_Clicked(object sender, EventArgs e)
+    {
+
+        if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+            string.IsNullOrWhiteSpace(txtApellido.Text) ||
+            string.IsNullOrWhiteSpace(txtDetalle.Text))
+        {
+            await DisplayAlert("Error", "Por favor, rellena todos los campos.", "OK");
+            
+        }else
+        {
+            if (id > 0)
+            {
+                update();
+            }
+            else
+            {
+                create();
+            }
+        }
+
+    }
+
+    private async void create()
     {
         var nombre = txtNombre.Text;
         var apellido = txtApellido.Text;
@@ -40,10 +76,10 @@ public partial class VFormPaciente : ContentPage
         if (response.IsSuccessStatusCode)
         {
             var respuesta = await response.Content.ReadAsStringAsync();
-            if(respuesta=="1")
+            if (respuesta == "1")
             {
                 await DisplayAlert("Alerta", "Paciente registrado", "OK");
-                await Navigation.PushAsync(new VListPacientes());
+                await Navigation.PopToRootAsync();
             }
             Console.WriteLine(respuesta);
         }
@@ -51,6 +87,10 @@ public partial class VFormPaciente : ContentPage
         {
             Console.WriteLine("Error en la solicitud. Código de estado: " + response.StatusCode);
         }
+    }
+    private async void update()
+    {
+
     }
 
     private async void btnTomarF_Clicked(object sender, EventArgs e)

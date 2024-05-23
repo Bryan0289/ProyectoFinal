@@ -33,7 +33,7 @@
             </ShellContent.Icon>
         </ShellContent>
     <ShellContent ContentTemplate="{DataTemplate PacienteMedicina:VListaRecetas}"
-          Title="Lista de Resetas">
+          Title="Lista de Recetas">
         <ShellContent.Icon>
 
 

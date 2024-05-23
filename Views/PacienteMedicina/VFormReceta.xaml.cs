@@ -1,3 +1,4 @@
+using Microsoft.Maui.Controls;
 using Newtonsoft.Json;
 using ProyectoFinal.Models;
 using ProyectoFinal.Views.Paciente;
@@ -49,14 +50,25 @@ public partial class VFormReceta : ContentPage
 
     private async void btnGuardar_Clicked(object sender, EventArgs e)
     {
+        
+        if (string.IsNullOrWhiteSpace(txtDuracionDias.Text)||
+            string.IsNullOrWhiteSpace(txtIntervalo.Text))
+        {
+            await DisplayAlert("Error", "Por favor, rellena todos los campos.", "OK");
+            return;
+        }
+        create();
+    }
+    private async void create()
+    {
         var index_pa = pkUsuarios.SelectedIndex;
         var index_me = pkMedicina.SelectedIndex;
-        if (index_pa != -1 && index_me!=-1)
+        if (index_pa != -1 && index_me != -1)
         {
             var pa = est[index_pa];
             var me = est2[index_me];
-            var hora = txtHoraInicio.Text;
-            var intervalo = txtIntervalo.Text;
+            var hora = dpFecha.ToString();
+            var intervalo = txtIntervalo.Time.ToString();
             var duracion = txtDuracionDias.Text;
             var parametros = new Dictionary<string, string>
             {
@@ -90,6 +102,5 @@ public partial class VFormReceta : ContentPage
         {
             DisplayAlert("alert", "Seleccione paciente", "ok");
         }
-
     }
 }

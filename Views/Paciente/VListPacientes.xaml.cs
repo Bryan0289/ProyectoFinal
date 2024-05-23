@@ -24,6 +24,12 @@ public partial class VListPacientes : ContentPage
       
 
     }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        ObtenerDatos();
+    }
     public async void ObtenerDatos()
     {
         var content = await paciente.GetStringAsync(url);
@@ -80,5 +86,11 @@ public partial class VListPacientes : ContentPage
         var app = (App)Application.Current;
         
         app.CambiarShell("Paciente", paciente);
+    }
+
+    private void btnUpdate_Clicked(object sender, EventArgs e)
+    {
+        var paciente = (PacienteModel)(sender as MenuItem).CommandParameter;
+        Navigation.PushAsync(new VFormPaciente(paciente));
     }
 }

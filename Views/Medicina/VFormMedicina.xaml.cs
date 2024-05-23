@@ -7,6 +7,7 @@ public partial class VFormMedicina : ContentPage
 {
 
     private string ip;
+    private int id;
     private string url;
     private string filePath;
     private readonly HttpClient paciente = new HttpClient();
@@ -16,17 +17,53 @@ public partial class VFormMedicina : ContentPage
         ip = serverip.ipserver;
         InitializeComponent();
 	}
+    public VFormMedicina(MedicinaModel medicina)
+    {
+        ip = serverip.ipserver;
+        InitializeComponent();
+
+        id = medicina.Id;
+        medicinaF.Source = medicina.Foto;
+        txtNombre.Text = medicina.Nombre;
+        txtDescription.Text = medicina.Descripcion;
+        txtDosificacion.Text = medicina.Dosificacion;
+        txtPresentacion.Text= medicina.Presentacion;
+        txtIndicaciones.Text = medicina.Indicaciones;
+    }
 
     private async  void btnGuardar_Clicked(object sender, EventArgs e)
     {
-		var nombre = txtNombre.Text;
-		var des = txtDescription.Text;
-		var dosis = txtDosificacion.Text;
-		var prese = txtPresentacion.Text;
+        if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+            string.IsNullOrWhiteSpace(txtDescription.Text) ||
+            string.IsNullOrWhiteSpace(txtDosificacion.Text) ||
+            string.IsNullOrWhiteSpace(txtPresentacion.Text))
+        {
+            await DisplayAlert("Error", "Por favor, rellena todos los campos.", "OK");
+            return;
+        }
+        else
+        {
+            if (id > 0)
+            {
+                update();
+            }
+            else
+            {
+                create();
+            }
+        }
 
-        string url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?AddMedicina=true";
-		try
-		{
+    }
+    private async void create()
+    {
+        var nombre = txtNombre.Text;
+        var des = txtDescription.Text;
+        var dosis = txtDosificacion.Text;
+        var prese = txtPresentacion.Text;
+
+        string url = "http://" + ip + "/APPS/Back/Controlador/controlador.php?AddMedicina=true";
+        try
+        {
             var parametros = new Dictionary<string, string>
             {
                 { "nombre",nombre },
@@ -45,7 +82,7 @@ public partial class VFormMedicina : ContentPage
                 if (respuesta == "1")
                 {
                     await DisplayAlert("Guardado", "Medicina registrada", "OK");
-                    await Navigation.PushAsync(new VListaMedicinas());
+                    await Navigation.PopToRootAsync();
                 }
                 Console.WriteLine(respuesta);
             }
@@ -55,11 +92,14 @@ public partial class VFormMedicina : ContentPage
             }
 
         }
-		catch (Exception ex)
-		{
+        catch (Exception ex)
+        {
 
-			throw;
-		}
+            throw;
+        }
+    }
+    private async void update()
+    {
 
     }
 

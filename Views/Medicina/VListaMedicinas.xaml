@@ -18,14 +18,25 @@
                                 Clicked="btn_Delete_Clicked"
                                 CommandParameter="{Binding .}"
                                 />
+                            <MenuItem
+    x:Name="btnEditar"
+    Text="Editar"
+    IsDestructive="True"
+    Clicked="btnEditar_Clicked"
+    CommandParameter="{Binding .}"
+    />
                         </ViewCell.ContextActions>
                         <StackLayout Padding="15,0">
                             <Grid ColumnDefinitions="*,2*" RowDefinitions="*,*"
                           Margin="0,10,0,0">
-                                <Image Source="{Binding Foto}"   Grid.RowSpan="2" 
+                                <Image Source="medicina.jpg"   Grid.RowSpan="2" 
                        HeightRequest="75"
                        WidthRequest="75"
                                Margin="0,0,0,5"/>
+                                <Image Source="{Binding Foto}"   Grid.RowSpan="2" 
+HeightRequest="75"
+WidthRequest="75"
+        Margin="0,0,0,5"/>
 
                                 <Label Text="{Binding Nombre}" FontSize="Title" Grid.Column="1"/>
                                 <Label Text="{Binding Descripcion}" FontSize="Small" Grid.Column="1" Grid.Row="1"/>

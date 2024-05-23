@@ -58,12 +58,14 @@
                            VerticalTextAlignment="Center"/>
                     <Entry x:Name="txtNombre"
                            Placeholder="Nombre"
+                           Keyboard="Chat"
                            Grid.Column="1"/>
                     <Label Text="Description:"
                            VerticalTextAlignment="Center"
                            Grid.Row="1"/>
                     <Entry x:Name="txtDescription"
                            Placeholder="Description"
+                           Keyboard="Chat"
                            Grid.Row="1"
                            Grid.Column="1"/>
                     <Label Text="Dosificacion:"
@@ -71,6 +73,8 @@
                            Grid.Row="2"/>
                     <Entry x:Name="txtDosificacion"
                            Placeholder="Dosificacion"
+                           Keyboard="Numeric"
+                           MaxLength="2"
                            Grid.Row="2"
                            Grid.Column="1"/>
                     <Label Text="Presentacion:"
@@ -78,6 +82,7 @@
        Grid.Row="3"/>
                     <Entry x:Name="txtPresentacion"
        Placeholder="Presentacion"
+                           Keyboard="Chat"
        Grid.Row="3"
        Grid.Column="1"/>
                     <Label Text="Indicaciones:"
@@ -85,6 +90,7 @@ VerticalTextAlignment="Center"
 Grid.Row="4"/>
                     <Entry x:Name="txtIndicaciones"
 Placeholder="Indicaciones"
+                           Keyboard="Chat"
 Grid.Row="4"
 Grid.Column="1"/>
 
@@ -93,7 +99,6 @@ Grid.Column="1"/>
                        Grid.Row="5"
                        Grid.ColumnSpan="2"
                        Margin="20,10,20,0"
-                       BackgroundColor="#3d4a6d"
                              Clicked="btnGuardar_Clicked"
                        />
 

@@ -13,7 +13,7 @@ namespace ProyectoFinal.Models
         public  Config()
         {
             //ipserver = "192.168.100.19";
-            ipserver = "192.168.100.12";
+            ipserver = "192.168.100.19";
         }
      
     }

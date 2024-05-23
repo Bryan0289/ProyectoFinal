@@ -24,6 +24,12 @@ public partial class VListaMedicinas : ContentPage
         ObtenerDatos();
            
     }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        ObtenerDatos();
+    }
 
     public async void ObtenerDatos()
     {
@@ -75,5 +81,11 @@ public partial class VListaMedicinas : ContentPage
             }
 
         }
+    }
+
+    private void btnEditar_Clicked(object sender, EventArgs e)
+    {
+        var medicina = (MedicinaModel)(sender as MenuItem).CommandParameter;
+        Navigation.PushAsync(new VFormMedicina(medicina));
     }
 }

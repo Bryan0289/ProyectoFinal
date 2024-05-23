@@ -51,15 +51,17 @@
                     <Label Text="Hora de Inicio:"
                            VerticalTextAlignment="Center"
                            />
-                    <Entry x:Name="txtHoraInicio" 
-                           Placeholder="Fecha (dd/mm/aaaa)" 
-                           Grid.Column="1"/>
+                    <DatePicker x:Name="dpFecha"
+                                Grid.Column="1"/>
                     <Label Text="Frecuencia:"
                            VerticalTextAlignment="Center"
                            Grid.Row="1"/>
 
                     <Entry x:Name="txtIntervalo"
-                           Placeholder="hh:mm" 
+                           Placeholder="Frecuencia"
+                           
+                           Keyboard="Numeric"
+                           MaxLength="2"
                            Grid.Column="1"
                            Grid.Row="1"/>
                     <Label Text="Duracion:"
@@ -68,6 +70,8 @@
 
                     <Entry x:Name="txtDuracionDias"
                            Placeholder="Duracion"
+                           Keyboard="Numeric"
+                           MaxLength="3"
                            Grid.Column="1"
                            Grid.Row="2"/>
 

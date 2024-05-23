@@ -35,7 +35,20 @@ public partial class VControlRegistro : ContentPage
 
     private async  void btnGuardar_Clicked(object sender, EventArgs e)
     {
-        string url = "http://"+ip+"/APPS/Back/Controlador/controlador.php?AddTriaje=true";
+        if (string.IsNullOrWhiteSpace(txtInsulina.Text) ||
+            string.IsNullOrWhiteSpace(txtArterial.Text) ||
+            string.IsNullOrWhiteSpace(txtAltura.Text) ||
+            string.IsNullOrWhiteSpace(txtPeso.Text))
+        {
+            await DisplayAlert("Error", "Por favor, rellena todos los campos.", "OK");
+            return;
+        }
+        create();
+
+    }
+    private async void create()
+    {
+        string url = "http://" + ip + "/APPS/Back/Controlador/controlador.php?AddTriaje=true";
         var id_paciente = pkPaciente.SelectedIndex;
         if (id_paciente != -1)
         {
@@ -44,7 +57,7 @@ public partial class VControlRegistro : ContentPage
             var presion = txtArterial.Text;
             var altura = txtAltura.Text;
             var peso = txtPeso.Text;
-            
+
             var parametros = new Dictionary<string, string>
             {
                 { "paciente",pacie.Id.ToString() },
@@ -77,6 +90,5 @@ public partial class VControlRegistro : ContentPage
         {
             DisplayAlert("alert", "Seleccione paciente", "ok");
         }
-
     }
 }
